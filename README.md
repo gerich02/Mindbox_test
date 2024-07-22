@@ -24,10 +24,10 @@
 ``` source venv/Scripts/activate ``` 
 - Установите зависимости из файла requirements.txt:   
 ``` pip install -r requirements.txt ```
-Далее, чтобы собрать пакет библиотеки выполните команду:
+- Далее, чтобы собрать пакет библиотеки выполните команду:
 ``` python setup.py sdist bdist_wheel ```
 
-У Вас появтяся папки dist/ и build/. Это билды библиотеки.
+У Вас появятся папки dist/ и build/. Это билды библиотеки.
 
 - Чтобы установить библиотеку из локального источника выполните команду:
 ``` pip install dist/mindbox_area_calculator-0.1-py3-none-any.whl ```
