@@ -20,17 +20,21 @@ class Circle(Figure):
     def __init__(self, radius: float):
         super().__init__()
         if not self.is_valid_circle(radius):
-            raise ValueError("Круга с таким радиусом не может существовать")
+            raise ValueError(
+                "Круг с таким радиусом не может существовать"
+                "Радиус должен быть любым положительным числом"
+            )
         self.radius = radius
 
     def is_valid_circle(self, r: float):
-        """Проверка, может ли треугольник с такими сторонами существовать."""
-        return r > 0
+        """Проверка, может ли круг существовать с таким радиусом."""
+        if type(r) in [int, float]:
+            return r > 0
+        return False
 
     def area_calc(self):
         """Метод, для рассчета площади круга."""
-        area = math.pi * self.radius**2
-        print(f'Площадь круга с радиусом {self.radius} равна {area}')
+        return math.pi * self.radius**2
 
 
 class Triangle(Figure):
@@ -48,7 +52,8 @@ class Triangle(Figure):
 
     def is_valid_triangle(self, s1: float, s2: float, s3: float):
         """Проверка, может ли треугольник с такими сторонами существовать."""
-        if s1 > 0 and s2 > 0 and s3 > 0:
+        data = [s1, s2, s3]
+        if all(isinstance(x, (int, float)) and x > 0 for x in data):
             return (s1 + s2 > s3) and (s1 + s3 > s2) and (s2 + s3 > s1)
         return False
 
@@ -58,26 +63,11 @@ class Triangle(Figure):
         s2 = self.side2
         s3 = self.side3
         half_p = (s1 + s2 + s3)/2
-        area = math.sqrt(
+        return math.sqrt(
             half_p * (half_p - s1) * (half_p - s2) * (half_p - s3)
         )
-        print(f'Площадь треугольника со сторонами {self.side1}, {self.side2}'
-              f' и {self.side3} равна {area}')
 
     def is_right_angled(self):
         """Метод, определяющий является ли треугольник прямоугольным."""
         side_list = sorted([self.side1, self.side2, self.side3])
-        if side_list[0]**2 + side_list[1]**2 == side_list[2]**2:
-            print(f'Треугольник со сторонами {self.side1}, {self.side2}'
-                  f' и {self.side3} прямоугольный')
-        else:
-            print(f'Треугольник со сторонами {self.side1}, {self.side2}'
-                  f' и {self.side3} не прямоугольный')
-
-
-Circle1 = Circle(0.5)
-Circle1.area_calc()
-
-Triangle1 = Triangle(8, 6, 11)
-Triangle1.area_calc()
-Triangle1.is_right_angled()
+        return side_list[0]**2 + side_list[1]**2 == side_list[2]**2
