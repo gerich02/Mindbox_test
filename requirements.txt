@@ -10,6 +10,7 @@ jaraco.functools==4.0.1
 keyring==25.2.1
 markdown-it-py==3.0.0
 mdurl==0.1.2
+mindbox-area-calculator @ file:///C:/Dev/Mindbox_test/dist/mindbox_area_calculator-0.1-py3-none-any.whl
 more-itertools==10.3.0
 nh3==0.2.18
 pkginfo==1.10.0
